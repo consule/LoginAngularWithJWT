@@ -4,6 +4,7 @@ Utilizei a template SB Admin Angular que é um tema Bootstrap open-source com an
 
 Alterar o arquivo environment.ts com o link da sua API de login e estará tudo pronto. 
 
+
 Formato que seu endpoint precisa retornar:
 
 `
