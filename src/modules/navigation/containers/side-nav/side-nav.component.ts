@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { UserService } from '@modules/auth/services';
 import { SideNavItems, SideNavSection } from '@modules/navigation/models';
 import { NavigationService } from '@modules/navigation/services';
@@ -18,11 +19,19 @@ export class SideNavComponent implements OnInit, OnDestroy {
     subscription: Subscription = new Subscription();
     routeDataSubscription!: Subscription;
 
-    constructor(public navigationService: NavigationService, public userService: UserService) {}
+    constructor(
+        public navigationService: NavigationService,
+        public userService: UserService,
+        private router: Router
+    ) {}
 
     ngOnInit() {}
 
     ngOnDestroy() {
         this.subscription.unsubscribe();
+    }
+    Logout() {
+        localStorage.removeItem('token');
+        this.router.navigate(['auth/login']);
     }
 }
